@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>delete</title>
+</head>
+<body>
+<h1>are you, sure you want to delele ?</h1>
+<div class="container">
+<form action="" method="POST">
+{% csrf_token %}
+
+<input type="submit" name="btndelet" value="yes">
+
+<br>
+<a href="/">cancel</a>
+</form>
+</div>
+</body>
+</html>

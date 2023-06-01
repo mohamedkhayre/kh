@@ -1,0 +1,122 @@
+
+{% load static %}
+{% block content %}
+
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+	.panellu{
+      margin-left: 1150px;
+	 
+	  font-size:15px;
+    }
+   
+	.panell {
+	  background-color: #125688;
+      color: white;
+
+    }
+	
+    .panelll {
+      max-width: 80px;
+      margin-left: 10px;
+      
+      border: 1px solid #eee;
+      box-shadow: 0 0 4px rgba(0, 0, 0, .19);
+	  
+     }
+	 .card2 {
+      max-width: 80px;
+     margin-left: 10px;      
+      border: 1px solid #eee;
+      box-shadow: 0 0 4px rgba(0, 0, 0, .19);
+     }
+	 
+	 
+  </style>
+</head>
+<!--
+written By : sumit kumar
+facebook : fb.com/sumit.luv
+-->
+
+<div >
+  <div >
+    <div class="panel-heading">
+      <h6 class="panel-title">Total Customers</h6>
+    </div>
+	<div class="panellu">
+	<h2><a  href="/login">logout</a></h2>
+	</div>
+	<div class="panelll panelll-primary">	
+	<h3>student<br/>{{ccount}}</h3>
+	</div>
+	<div class='card2 card2-body'>
+	
+	<a href="{% url 'bill' %}"><h3>bill<br/>{{cco}}</h3></a>
+	</div>
+	
+	<br>
+	<div class='panell panell-primary'>
+	
+	<div class='card card-body'>
+	<form action="" method="get">
+	{{orderr.form}}
+	<button class='btn btn-success' type='submit'>search</button>
+	<button class='btn btn-light' type='submit'>Add</button>
+	</form>
+	</div>
+	
+	</div>
+	<br>
+	
+    <table class="table table-hover table-bordered" id="dev-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Picture</th>
+          <th>Contact</th>
+          <th>Address</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+	 
+      {% for c in customers %}
+	   <tbody>
+      <tr>
+        <td> {{c.user}}</td>
+      <td> <img src="{{ c.profile_pic.url }}" alt="connect" height="40px" width="40px" /></td>
+        <td>{{c.mobile}}</td>
+        <td>{{c.address}}</td>
+        <td><a class="btn btn-primary btn-xs" href="{% url 'edit-profile' c.id %}"><span class="glyphicon glyphicon-edit">update</span></a>
+        <a class="btn btn-danger btn-xs" href="{% url 'deleingg' c.id %}"><span class="glyphicon glyphicon-trash">Delete</span></a>
+		 <a class="btn btn-primary btn-sm rounded-0" style="text-decoration:none;" href="{% url 'download-invoice' c.id %}" target="_blank"><i class="fa fa-download " style="font-size: 12px;height:auto"></i> Download</a>
+		
+      </tr>
+
+	  </tbody>
+			  {% empty %}	
+				<h1> ma jiro</h1>  
+	
+      {% endfor %}
+	  
+    </table>
+	
+  </div>
+  <a href="{% url 'rdd' %}">report all</a>
+</div>
+<!--
+developed By : sumit kumar
+-->
+{% endblock content %}

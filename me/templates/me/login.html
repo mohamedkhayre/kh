@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+{% load static %}
+<html>
+<head>
+<title>Abaarso</title>
+
+</head>
+<body>
+<h1>login section</h1>
+<div class="container">
+    <form class="box" method="post">
+        {% csrf_token %}
+          <h1>Customer Login</h1>
+          
+                     {% render_field form.username autocomplete="off" %}
+                     {% render_field form.password  %}
+           <input type="submit" name="" value="Login" >
+           <img src="{%static 'images/lock.png' %}">
+
+      </form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{% load widget_tweaks %} {% block content %}
+
+<html>
+<head>
+<title>delete</title>
+</head>
+<body>
+    {% if todor %}
+<h1>are you, sure you want to update this person ?</h1>
+<div class="container">
+    <form action={% url 'edit-profile' todor.id %} method="POST" enctype="multipart/form-data">
+        
+        {% csrf_token %}
+       
+
+        <label>address</label>
+        <br>
+        <div class="form-group">
+                            {% render_field form.address class="form-control" placeholder="Address" %}
+                        </div>
+		<br>
+        <label>mobile</label>
+        <br>
+        <div class="form-group">
+                            {% render_field form.mobile class="form-control" placeholder="Mobile" %}
+                        </div>
+        <br>
+	   <label>picture</label>
+        <br>
+	   <div class="form-group">
+                            {% render_field form.profile_pic class="form-control" placeholder="Profile Picture" %}
+                        </div>
+						 <br>
+        <input type="submit" name="btnupd" value="Update" class="form-control">
+        <br>
+        <input type="submit" name="btncancel" value="Cancel" class="form-control">
+        
+        </form>
+</div>
+{% endif %}
+</body>
+</html>
+{% endblock content %}
